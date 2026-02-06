@@ -68,6 +68,11 @@ RUN git clone --depth 1 https://github.com/JPS-GER/ComfyUI_JPS-Nodes.git
 RUN git clone --depth 1 https://github.com/jamesWalker55/comfyui-various.git
 RUN pip install soundfile rotary-embedding-torch --no-cache-dir
 
+# RIFE Frame-Interpolation (补帧核心插件)
+RUN git clone --depth 1 https://github.com/Fannovel16/ComfyUI-Frame-Interpolation.git
+RUN cd ComfyUI-Frame-Interpolation && pip install -r requirements.txt --no-cache-dir
+RUN mkdir -p /comfyui/custom_nodes/ComfyUI-Frame-Interpolation/ckpts
+
 # Global dependencies
 WORKDIR /comfyui
 RUN pip install --no-cache-dir blend_modes diffusers transformers accelerate opencv-python opencv-contrib-python imageio imageio-ffmpeg einops basicsr lark runpod
